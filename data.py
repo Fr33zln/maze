@@ -6,6 +6,8 @@ import os
 pygame.init()
 
 size_window = (995,500)
+size_hero = (60,45)
+size_hero = (60,45)
 # 
 
 
@@ -15,6 +17,21 @@ WHITE = (255,255,255)
 FPS = 144
 #15 15
 wall_list = list()
+abs_path = os.path.abspath(__file__ +"/..")
+hero_image_list = [
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "noob_stand.png")), size_hero),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "noob_move1.png")), size_hero),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "noob_move2.png")), size_hero)
+]
+bot_image_list = [
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_stand.png")), size_hero),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_move1.png")), size_hero),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_move2.png")), size_hero),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_fast_stand.png")), size_hero),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_fast_move1.png")), size_hero),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_fast_move2.png")), size_hero)
+]
+
 #66 #33 
 maps = {
     "LVL1":{
