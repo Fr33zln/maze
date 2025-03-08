@@ -13,7 +13,6 @@ hero = Hero(
     size_hero[0],
     size_hero[1],
     hero_image_list,
-    #5,
     5
 )
 
