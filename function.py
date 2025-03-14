@@ -134,6 +134,16 @@ class Heart(pygame.Rect):
     def blit(self,window):
         window.blit(self.image, (self.x,self.y))
 
+class Well(pygame.Rect):
+    def __init__(self, x, y, width, height, image):
+        super().__init__(x, y, width, height)
+        self.image = image
+        
+    def blit(self,window):
+        window.blit(self.image, (self.x,self.y))
+
+
+
 
 class Wall(pygame.Rect):
     def __init__(self, x, y, width, height, color):
