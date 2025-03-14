@@ -18,16 +18,94 @@ hero = Hero(
 )
 
 bot1 = Bot(
-    300,
-    210,
+    100,
+    335,
     size_hero[0],
     size_hero[1],
     bot1_image_list,
-    -3,
-    "vertical-down",
-    radius = 200,
+    1,
+    "vertical",
+    radius = 105,
 )
 
+bot2 = Bot(
+    775,
+    435,
+    size_hero[0],
+    size_hero[1],
+    bot1_image_list,
+    1,
+    "horizontal",
+    radius = 140,
+)
+
+bot3 = Bot(
+    495,
+    12,
+    size_hero[0],
+    size_hero[1],
+    bot2_image_list,
+    2,
+    "horizontal",
+    radius = 120,
+)
+
+bot4 = Bot(
+    100,
+    10,
+    size_hero[0],
+    size_hero[1],
+    bot3_image_list,
+    2,
+    "vertical",
+    radius = 120,
+)
+bullet4= Bullet(bot4.x,
+                 bot4.y,
+                 20, 20,
+                 WHITE,
+                 bot4.orientation,
+                 2)
+
+
+bot5 = Bot(
+    780,
+    170,
+    size_hero[0],
+    size_hero[1],
+    bot3_image_list,
+    2,
+    "horizontal",
+    radius = 120,
+)
+bullet5= Bullet(bot5.x,
+                 bot5.y,
+                 20, 20,
+                 WHITE,
+                 bot5.orientation,
+                 2)
+
+bot6 = Bot(
+    590,
+    350,
+    size_hero[0],
+    size_hero[1],
+    bot1_image_list,
+    1,
+    "horizontal",
+    radius = 130,
+)
+
+bot7 = Bot(
+    690,
+    170,
+    size_hero[0],
+    size_hero[1],
+    bot2_image_list,
+    2,
+    "vertical",
+    radius = 100,
+)
 
 
 #bot2 = Bot(
@@ -58,9 +136,9 @@ bot1 = Bot(
 #                 5)
 
 
-heart_list.append(Heart(150,150,50, 50, heart_image_list))
-
-
+heart_list.append(Heart(290,255,50, 50, heart_image_list))
+heart_list.append(Heart(390,80,50, 50, heart_image_list))
+well_list.append(Heart(700,10,50, 50, well_image_list))
 
 
 
@@ -78,10 +156,20 @@ while game:
 
     hero.move(window)
     bot1.guardian(window)
+    bot2.guardian(window)
+    bot3.guardian(window)
+    bot4.striker(window, bullet4)
+    bot5.striker(window, bullet5)
+    bot6.guardian(window)
+    bot7.guardian(window)
     for heart in heart_list:
         heart.blit(window)
+        
+    for heart2 in heart_list:
+        heart2.blit(window)
 
-
+    for well in well_list:
+        well.blit(window)
 
     for wall in wall_list:
         pygame.draw.rect(window, wall.color, wall)
