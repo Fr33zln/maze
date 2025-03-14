@@ -16,7 +16,8 @@ WHITE = (255,255,255)
 
 FPS = 144
 #15 15
-wall_list = list()
+well_list = list()
+wall_list = list()                
 heart_list = list()
 abs_path = os.path.abspath(__file__ +"/..")
 hero_image_list = [
@@ -27,15 +28,22 @@ hero_image_list = [
 bot1_image_list = [
     pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_stand.png")), size_hero),
     pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_move1.png")), size_hero),
-    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_move2.png")), size_hero),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_move2.png")), size_hero)
 ]
 bot2_image_list = [
     pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_fast_stand.png")), size_hero),
     pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_fast_move1.png")), size_hero),
     pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_fast_move2.png")), size_hero)
-]
-heart_image_list =pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "health.png")), size_hero)
 
+]
+bot3_image_list = [
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_shooter_stand.png")), size_hero),
+    pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "zombie_shooter_shoot.png")), size_hero),
+
+]
+bullet_image_list =pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "bullet.png")), size_hero)
+heart_image_list =pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "health.png")), size_hero)
+well_image_list =pygame.transform.scale(pygame.image.load(os.path.join(abs_path, "Images", "well.png")), size_hero)
 
 
 
