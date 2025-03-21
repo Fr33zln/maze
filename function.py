@@ -96,12 +96,22 @@ class Bot(Human):
         self.move_image()
         window.blit(self.image,(self.x,self.y))
 
+    
+
 
 
     def striker(self,window,bullet):
         self.move_image()
         window.blit(self.image, (self.x, self.y))
         bullet.move(window)
+
+
+
+    def collide_hero(self,hero):
+        if self.colliderect(hero):
+            hero.hp =- 1
+            hero.x = hero.start_x
+            hero.y = hero.start_y
 
 class Bullet(pygame.Rect):
     def __init__(self,x,y,width,height,color,orientation,step,image = None):
@@ -112,6 +122,7 @@ class Bullet(pygame.Rect):
         self.start_x = x
         self.start_y = y
         self.step = step
+
 
     def move(self, window):
         if self.orientation.find('vertical') != -1:
@@ -125,6 +136,11 @@ class Bullet(pygame.Rect):
         pygame.draw.rect(window,self.color,self)
 
 
+    def collide_hero(self,hero):
+        if self.colliderect(hero):
+            hero.hp =- 1
+            bullet_image_list.remove(self)
+
 
 class Heart(pygame.Rect):
     def __init__(self, x, y, width, height, image):
@@ -133,6 +149,13 @@ class Heart(pygame.Rect):
         
     def blit(self,window):
         window.blit(self.image, (self.x,self.y))
+
+    def collide_hero(self,hero):
+        if self.colliderect(hero):
+            hero.hp =+ 1
+            heart_list.remove(self)
+
+
 
 class Well(pygame.Rect):
     def __init__(self, x, y, width, height, image):
