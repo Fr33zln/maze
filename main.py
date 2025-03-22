@@ -60,12 +60,12 @@ bot4 = Bot(
     "vertical",
     radius = 120,
 )
-bullet4= Bullet(bot4.x,
+bullet4= Bullet(bot4.x+17,
                  bot4.y,
                  20, 20,
                  WHITE,
                  bot4.orientation,
-                 2)
+                 1)
 
 
 bot5 = Bot(
@@ -78,12 +78,12 @@ bot5 = Bot(
     "horizontal",
     radius = 120,
 )
-bullet5= Bullet(bot5.x,
-                 bot5.y,
+bullet5= Bullet(bot5.x+20,
+                 bot5.y+7,
                  20, 20,
                  WHITE,
                  bot5.orientation,
-                 2)
+                 1)
 
 bot6 = Bot(
     590,
@@ -138,15 +138,17 @@ bot7 = Bot(
 
 heart_list.append(Heart(290,255,50, 50, heart_image_list))
 heart_list.append(Heart(390,80,50, 50, heart_image_list))
-well_list.append(Heart(700,10,50, 50, well_image_list))
+well_list.append(Well(700,10,50, 50, well_image_list))
 
-
+font = pygame.font.Font(None, 40)
 
 game = True
 while game:
     events = pygame.event.get()
     window.fill(BLACK)
-
+    window.blit(heart_image_list, (3,3))
+    render_hp = font.render(f"x{hero.hp}", True, BLACK)
+    window.blit(render_hp, (22,3))
 #    x,y = 0,0
 #    for i in range(100):
 #        pygame.draw.line(window, WHITE, (0, y), (size_window[0],y))
@@ -162,18 +164,24 @@ while game:
     bot5.striker(window, bullet5)
     bot6.guardian(window)
     bot7.guardian(window)
+
+
+    hero.collide_enemy([bot1, bot2, bot3, bot4, bot5, bot6, bot7, bullet4, bullet5])
+    hero.collide_heart(heart_list)
+
+
     for heart in heart_list:
         heart.blit(window)
         
-    for heart2 in heart_list:
-        heart2.blit(window)
-
     for well in well_list:
         well.blit(window)
 
     for wall in wall_list:
         pygame.draw.rect(window, wall.color, wall)
         #print(wall.x,wall.y)
+
+
+
 
 
     for event in events:
