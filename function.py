@@ -28,6 +28,8 @@ class Hero(Human):
         self.walk = {"up": False, "down": False, "left":False,"right":False}
         self.side = False
         self.hp = hp
+        self.start_x = self.x
+        self.start_y = self.y
         
 
     def move(self, window):
@@ -64,7 +66,18 @@ class Hero(Human):
         self.move_image()
         window.blit(self.image_now, (self.x,self.y))
 
+    def collide_enemy(self, list_obj):
+        if self.collidelist(list_obj) != -1:
+            self.x = self.start_x
+            self.y = self.start_y
+            self.hp -= 1
 
+
+    def collide_heart(self, heart_list):
+        index = self.collidelist(heart_list)
+        if index != -1:
+            heart_list.pop(index)
+            self.hp += 1
 
 
 
@@ -131,7 +144,7 @@ class Bullet(pygame.Rect):
                 self.y = self.start_y
         elif self.orientation.find('horizontal') != -1:
             self.x += self.step
-            if self.x < 0 or self.x > size_window[1] or self.collidelist(wall_list) != -1:
+            if self.x < 0 or self.x > size_window[0] or self.collidelist(wall_list) != -1:
                 self.x = self.start_x
         pygame.draw.rect(window,self.color,self)
 
